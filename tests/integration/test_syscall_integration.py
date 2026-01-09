@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 
-from tests.conftest import requires_abi_v4, requires_landlock
+from tests.conftest import requires_abi_v4, requires_abi_v6, requires_landlock
 
 
 @requires_landlock
@@ -17,6 +17,7 @@ class TestLandlockSyscallIntegration:
         assert version >= 1
         assert version <= 20  # Reasonable upper bound for future versions
 
+    @requires_abi_v6
     def test_get_abi_errata_returns_int(self) -> None:
         """get_abi_errata should return an integer."""
         from py_landlock.landlock_sys import get_abi_errata

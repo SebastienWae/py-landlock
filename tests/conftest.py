@@ -56,9 +56,9 @@ requires_landlock = pytest.mark.skipif(
     reason="Requires working Landlock (Linux, supported arch, kernel support, enabled)",
 )
 
-requires_abi_v4 = pytest.mark.skipif(_get_landlock_abi_version() < 4, reason="Requires Landlock ABI v4+ for network")
+requires_abi_v4 = pytest.mark.skipif(_get_landlock_abi_version() < 4, reason="Requires Landlock ABI v4+")
 
-requires_abi_v6 = pytest.mark.skipif(_get_landlock_abi_version() < 6, reason="Requires Landlock ABI v6+ for scope")
+requires_abi_v6 = pytest.mark.skipif(_get_landlock_abi_version() < 6, reason="Requires Landlock ABI v6+")
 
 
 @pytest.fixture
