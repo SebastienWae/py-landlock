@@ -1,0 +1,115 @@
+[project]
+name = "py-landlock"
+version = "0.1.0"
+description = "Python bindings for the Linux Landlock security module"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "Sebastien Waegeneire", email = "sebastien@Waegeneire.com" },
+]
+keywords = ["landlock", "linux", "security", "sandbox", "seccomp"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[dependency-groups]
+dev = ["basedpyright>=1.37.0", "pytest>=9.0.2", "ruff>=0.14.10"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+  "ANN",
+  "ASYNC",
+  "S",
+  "BLE",
+  "FBT",
+  "B",
+  "A",
+  "COM",
+  "C4",
+  "DTZ",
+  "EM",
+  "INT",
+  "ISC",
+  "ICN",
+  "LOG",
+  "G",
+  "INP",
+  "PIE",
+  "T20",
+  "PT",
+  "Q",
+  "RSE",
+  "RET",
+  "SLF",
+  "SIM",
+  "SLOT",
+  "TID",
+  "TD",
+  "TC",
+  "ARG",
+  "PTH",
+  "FLY",
+  "I",
+  "N",
+  "PERF",
+  "E",
+  "W",
+  "D",
+  "F",
+  "PGH",
+  "PL",
+  "PLE",
+  "PLR",
+  "PLW",
+  "UP",
+  "FURB",
+  "RUF",
+  "TRY",
+]
+ignore = [
+  # conflicting lint rules https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "COM812",
+  "COM819",
+  "ISC002",
+  # custom 
+  "D100",
+  "D104",
+  "D107",
+  "D203",
+  "D212",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "SLF001", "PLR2004", "PLC0415"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.basedpyright]
+executionEnvironments = [
+  { root = "tests", reportPrivateUsage = false, extraPaths = [
+    ".",
+  ] },
+]
